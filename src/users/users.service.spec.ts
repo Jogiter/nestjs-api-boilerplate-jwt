@@ -9,14 +9,14 @@ import { USERS_REPOSITORY_TOKEN } from './repositories/users.repository.interfac
 
 const userArray = [
   {
-    id: 1,
+    id: '1',
     name: 'name #1',
     username: 'username #1',
     email: 'test1@example.com',
     password: 'pass123',
   },
   {
-    id: 2,
+    id: '2',
     name: 'name #2',
     username: 'username #2',
     email: 'test2@example.com',
@@ -25,7 +25,7 @@ const userArray = [
 ];
 
 const oneUser = {
-  id: 1,
+  id: '1',
   name: 'name #1',
   username: 'username #1',
   email: 'test@example.com',
@@ -61,7 +61,7 @@ const updateProfileUser = {
 };
 
 const updateUser = {
-  id: 1,
+  id: '1',
   name: 'name #1 update',
   username: 'username #1 update',
   email: 'test@example.com',
@@ -128,12 +128,12 @@ describe('UsersService', () => {
 
   describe('findBySub() method', () => {
     it('should find a user by sub or fail', async () => {
-      expect(await service.findBySub(1)).toEqual(oneUser);
+      expect(await service.findBySub('1')).toEqual(oneUser);
     });
 
     it('should throw an exception if it not found a user by sub', async () => {
       repository.findBySub = jest.fn().mockResolvedValueOnce(null);
-      await expect(service.findBySub(1)).rejects.toThrow(NotFoundException);
+      await expect(service.findBySub('1')).rejects.toThrow(NotFoundException);
     });
   });
 
