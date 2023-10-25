@@ -23,7 +23,7 @@ export class UsersTypeOrmRepository implements UsersRepository {
     });
   }
 
-  public async findBySub(sub: number): Promise<Users> {
+  public async findBySub(sub: string): Promise<Users> {
     return await this.usersRepository.findOneByOrFail({
       id: sub,
     });
@@ -31,7 +31,7 @@ export class UsersTypeOrmRepository implements UsersRepository {
 
   public async findById(userId: string): Promise<Users> {
     return await this.usersRepository.findOneBy({
-      id: +userId,
+      id: userId,
     });
   }
 
@@ -62,7 +62,7 @@ export class UsersTypeOrmRepository implements UsersRepository {
     id: string,
     userProfileDto: UserProfileDto,
   ): Promise<Users> {
-    const user = await this.usersRepository.findOneBy({ id: +id });
+    const user = await this.usersRepository.findOneBy({ id: id });
     user.name = userProfileDto.name;
     user.email = userProfileDto.email;
     user.username = userProfileDto.username;
@@ -76,7 +76,7 @@ export class UsersTypeOrmRepository implements UsersRepository {
   ): Promise<UpdateResult> {
     return await this.usersRepository.update(
       {
-        id: +id,
+        id: id,
       },
       { ...userUpdateDto },
     );

@@ -5,7 +5,7 @@ import { UserDto } from '../dto/user.dto';
 export interface UsersRepository {
   findAll();
   findByEmail(email: string);
-  findBySub(sub: number);
+  findBySub(sub: string);
   findById(userId: string);
   create(userDto: UserDto);
   updateByEmail(email: string);

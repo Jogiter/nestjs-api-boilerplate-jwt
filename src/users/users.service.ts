@@ -36,7 +36,7 @@ export class UsersService {
     return user;
   }
 
-  public async findBySub(sub: number): Promise<Users> {
+  public async findBySub(sub: string): Promise<Users> {
     const user = await this.usersRepository.findBySub(sub);
 
     if (!user) {
